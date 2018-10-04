@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<title>All Dealer</title>
+	</head>
+	
+	<body>
+		<h2>ALL DEALER DETAIL</h2>
+		
+		<div th:each="dealer : ${allDealers}">
+			<strong><p th:text="'Alamat  :  ' + ${dealer.alamat}"></p></strong>
+			<strong><p th:text="'Telepon : ' + ${dealer.noTelp}"></p></strong>
+			
+			<table th:if="${!dealer.listCar.empty}" border="2" style="width:300px">
+			    <tr>
+			        <td>ID</td>
+			        <td>BRAND</td>
+			        <td>TYPE</td>
+			        <td>PRICE</td>
+			        <td>AMOUNT</td>
+			    </tr>
+		    
+		    	<th:block th:each ="car : ${dealer.listCar}">
+				    <tr>
+				        <td th:text="${car.id}"></td>
+						<td th:text="${car.brand}"></td>
+						<td th:text="${car.type}"></td>
+						<td th:text="${car.price}"></td>
+						<td th:text="${car.amount}"></td>
+				    </tr>
+				</th:block>
+			</table>
+			
+			
+			<br>
+		</div>
+		
+		<div>
+			<a th:href="@{/}">
+				<button type="submit"> Back </button>
+			</a>
+		</div>
+	</body>
+</html>
